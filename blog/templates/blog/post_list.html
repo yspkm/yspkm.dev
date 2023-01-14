@@ -2,7 +2,17 @@
 {% block main_area %}
 
 <h1>
-    Blog {%if category %}<span class="badge badge-secondary">{{ category }}</span>{% endif %}
+    Blog
+    {% if search_info %}
+        <small class="text-muted">
+            {{ search_info }}
+        </small>
+    {% endif %}
+    {%if category %}
+        <span class="badge badge-secondary">
+            {{ category }}
+        </span>
+    {% endif %}
 </h1>
 
 {% if post_list.exists %}
@@ -18,11 +28,11 @@
     <div class="card-body">
 
         {% if p.category %}
-            <span class="badge badge-secondary float-right">
+        <span class="badge badge-secondary float-right">
                 {{ p.category }}
             </span>
         {% else %}
-            <span class="badge badge-secondary float-right">
+        <span class="badge badge-secondary float-right">
                 미분류
             </span>
         {% endif %}
@@ -49,14 +59,38 @@
 {% else %}
 <h3>아직 게시물이 없습니다.</h3>
 {% endif %}
-
+{% if is_paginated %}
 <!-- Pagination -->
 <ul class="pagination justify-content-center mb-4">
+
+    {% if page_obj.has_previous %}
     <li class="page-item">
-        <a class="page-link" href="#">&larr; Older</a>
+        <a class="page-link" href="?page={{ page_obj.previous_page_number }}">
+            &larr; Newer;
+        </a>
     </li>
+    {% else %}
     <li class="page-item disabled">
-        <a class="page-link" href="#">Newer &rarr;</a>
+        <a class="page-link" href="#">
+            &larr; Newer;
+        </a>
     </li>
+    {% endif %}
+
+    {% if page_obj.has_next %}
+    <li class="page-item">
+        <a class="page-link" href="?page={{ page_obj.next_page_number }}">
+            Older &rarr;
+        </a>
+    </li>
+    {% else %}
+    <li class="page-item disabled">
+        <a class="page-link" href="#">
+            Older &rarr;
+        </a>
+    </li>
+    {% endif %}
+
 </ul>
+{% endif %}
 {% endblock %}

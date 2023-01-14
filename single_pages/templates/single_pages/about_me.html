@@ -1,32 +1,76 @@
 <!DOCTYPE html>
-<html lang="ko">
-    <head>
-        <meta charset="UTF-8">
-        <title>
-            개발자 yspkm입니다.
-        </title>
-    </head>
+{% load static %}
 
-    <body>
-        <nav>
-            <a href="/blog/">
-                Blog
-            </a>
-            <a href="/about_me/">
-                About me
-            </a>
-        </nav>
-        <h1>
-            안녕하세요 yspkm입니다.
-        </h1>
-        <h2>
-            이력
-        </h2>
-        <h2>
-            Portfolio
-        </h2>
-        <h3>
-            아직 만드는 중입니다.
-        </h3>
-    </body>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>
+        About Me
+    </title>
+    <link rel = "stylesheet" href="{% static 'blog/bootstrap/bootstrap.min.css' %}" media="screen">
+    <link rel = "stylesheet" href="{% static 'single_pages/css/about_me.css' %}" media="screen">
+
+    <script src="https://kit.fontawesome.com/6d1ca0bb27.js" crossorigin="anonymous"></script>
+
+</head>
+
+<body>
+<!-- Navigation Bar -->
+{% include 'blog/navbar.html' %}
+
+<section>
+    <div class="container mt-4">
+        <div class="row">
+
+            <div class="col-lg-8">
+                <h1>
+                    안녕하세요 yspkm입니다.
+                </h1>
+                <br/>
+                <p class="lead">
+                    프로그래밍, 독서, 여행을 좋아합니다.<br>
+                    제 손으로 의미있는 가치를 만들고 싶습니다.<br>
+                </p>
+                <a href="mailto:yskim0830@outlook.com">Email</a>
+                <a href="https://github.com/yspkm">
+                    <i class="fab fa-github">
+                    </i>
+                </a>
+                <a href="https://www.linkedin.com/in/yspkm">
+                   <i class="fa-brands fa-linkedin">
+                   </i>
+                </a>
+            </div>
+            <div class="col-lg-4">
+                <img class="img-fluid" src="{% static 'single_pages/images/docker.png' %}">
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="bg-light margin-for-footer">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Footer -->
+<div class="fixed-bottom">
+    {% include 'blog/footer.html' %}
+</div>
+
+<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+        integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+        crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+        crossorigin="anonymous"></script>
+
+</body>
 </html>

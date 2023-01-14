@@ -4,7 +4,18 @@ import os
 
 # Create your models here.
 
+class Category(models.Model):
+    # 카테고리명은 유일하게
+    name = models.CharField(max_length=50, unique=True)
+    # allow_unicode: 한글 사용 URL
+    slug = models.SlugField(max_length=200, unique=True, allow_unicode=True)
 
+    def __str__(self):
+        return self.name
+
+    class Meta:
+        # 이렇게 안하면 admin 페이지에서 Categorys라고 뜸
+        verbose_name_plural = 'Categories'
 class Post(models.Model):
     title = models.CharField(max_length=30)
     hook_text = models.CharField(max_length=100, blank=True)
@@ -18,6 +29,8 @@ class Post(models.Model):
 
     #author = models.ForeignKey(User, on_delete=models.CASCADE)
     author = models.ForeignKey(User, null=True, on_delete=models.SET_NULL)
+
+    category = models.ForeignKey(Category, null=True, blank=True, on_delete=models.SET_NULL)
 
     def __str__(self):
         # f-string

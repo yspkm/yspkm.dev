@@ -16,6 +16,9 @@ class Category(models.Model):
     class Meta:
         # 이렇게 안하면 admin 페이지에서 Categorys라고 뜸
         verbose_name_plural = 'Categories'
+
+    def get_absolute_url(self):
+        return f'/blog/category/{self.slug}/'
 class Post(models.Model):
     title = models.CharField(max_length=30)
     hook_text = models.CharField(max_length=100, blank=True)

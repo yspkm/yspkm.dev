@@ -33,6 +33,26 @@ class TestView(TestCase):
             author=self.user_test1,
         )
 
+    # 카테고리 페이지 테스트
+    def category_page_test(self):
+        response = self.client.get(self.category_test0.get_absolute_url())
+        # 정상적으로 불러옴 (cf. 404면 실패)
+        self.assertEqual(response.status_code, 200)
+        soup = BeautifulSoup(response.content, 'html.parser')
+        self.navbar_test(soup)
+        self.category_card_test(soup)
+
+        self.assertIn(self.category_test0.name, soup.h1.text)
+
+        main_area = soup.find('div', id='main-area')
+        # 카테고리명이 포함되고
+        self.assertIn(self.category_test0.name, main_area.text)
+        # 타이틀도 포함되어 있고
+        self.assertIn(self.post_001.title, main_area.text)
+
+        # 다른 포스트는 포함되면 실패
+        self.assertNotIn(self.post_002.title, main_area.text)
+        self.assertNotIn(self.post_003.title, main_area.text)
 
     # 카테고리 카드 테스트
     def category_card_test(self, soup):
@@ -59,7 +79,6 @@ class TestView(TestCase):
 
         about_me_btn = navbar.find('a', text='About Me')
         self.assertEqual(about_me_btn.attrs['href'], '/about_me/')
-
 
 
     # 포트스 리스트 페이지 테스트
@@ -115,6 +134,8 @@ class TestView(TestCase):
 
         # 2.2 포스트 목록 페이지와 똑같은 네비게이션 바가 있다.
         self.navbar_test(soup)
+        # 카테고리 테스트
+        self.category_card_test(soup)
 
         # 2.3 첫 번째 포스트ㅡ이 제목(title)이 웹 브라우저 탭 타이틀에 있다.
         self.assertIn(self.post_001.title, soup.title.text)
@@ -123,6 +144,7 @@ class TestView(TestCase):
         main_area = soup.find('div', id='main-area')
         post_area = main_area.find('div', id='post-area')
         self.assertIn(self.post_001.title, post_area.text)
+        self.assertIn(self.category_test0.name, post_area.text)
 
         # 2.5 첫 번째 포스트의 작성자(author)가 포스트 영역에 있다.
         self.assertIn(self.user_test0.username.upper(), post_area.text)

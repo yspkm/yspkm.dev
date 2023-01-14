@@ -36,7 +36,7 @@
         </h5>
         {% endif %}
         <p class="card-text">
-            {{ p.content | truncatechars:140 }}
+            {{ p.get_content_markdown | truncatewords_html:45 | safe }}
         </p>
         <a class="btn btn-primary" href="{{ p.get_absolute_url }}">Read More &rarr;</a>
     </div>

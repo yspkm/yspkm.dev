@@ -7,6 +7,16 @@ import os
 
 # Create your models here.
 
+class Tag(models.Model):
+    name = models.CharField(max_length=50)
+    slug = models.SlugField(max_length=200, unique=True, allow_unicode=True)
+
+    def __str__(self):
+        return self.name
+
+    def get_absolute_url(self):
+        return f'/blog/tag/{self.slug}/'
+
 class Category(models.Model):
     # 카테고리명은 유일하게
     name = models.CharField(max_length=50, unique=True)
@@ -37,6 +47,10 @@ class Post(models.Model):
 
     category = models.ForeignKey(Category, null=True, blank=True, on_delete=models.SET_NULL)
 
+    # 다대다 관게
+    # null=True는 디폴트로 설정되어 있음
+    tags = models.ManyToManyField(Tag, blank=True)
+
     def __str__(self):
         # f-string
         # 문자열을 쉽게 formatting 한다.
@@ -53,7 +67,7 @@ class Post(models.Model):
 
     def get_file_name(self):
         return os.path.basename(self.file_upload.name)
-    
+
     def get_file_ext(self):
         return self.get_file_name().split('.')[-1]
 

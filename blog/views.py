@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.views.generic import ListView, DetailView
-from . models import Post, Category
+from . models import Post, Category, Tag
 from django.db.models import Q
 
 # Create your views here.
@@ -15,8 +15,6 @@ from django.db.models import Q
 #             'posts': posts,
 #         }
 #     )
-
-
 
 class PostList(ListView):
     model = Post
@@ -40,7 +38,7 @@ class PostSearch(PostList):
     def get_queryset(self):
         q = self.kwargs['q']
         post_list = Post.objects.filter(
-            Q(title__contains=q) | Q(content__contains=q) #| Q(tags__name__contains=q)
+            Q(title__contains=q) | Q(tags__name__contains=q) #| Q(content__contains=q)
         ).distinct()
         return post_list
     def get_context_data(self, **kwargs):
@@ -49,7 +47,6 @@ class PostSearch(PostList):
         context['search_info'] = f'Search: {q} ({self.get_queryset().count()})'
 
         return context
-
 
 
 class PostDetail(DetailView):
@@ -92,3 +89,23 @@ def category_page(request, slug):
             'category':category,
         }
     )
+
+def tag_page(request, slug):
+    tag = Tag.objects.get(slug=slug)
+    post_list = tag.post_set.all()
+
+    return render(
+        request,
+        'blog/post_list.html',
+        {
+            'post_list': post_list,
+            'tag': tag,
+            'categories': Category.objects.all(),
+            'no_category_post_count': Post.objects.filter(category=None).count(),
+        }
+    )
+
+
+
+
+

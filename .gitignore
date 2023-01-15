@@ -63,6 +63,8 @@ db.sqlite3
 db.sqlite3-journal
 migrations/
 _media/
+.secrets.json
+.env
 
 # Flask stuff:
 instance/

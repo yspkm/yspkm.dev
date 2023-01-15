@@ -13,12 +13,11 @@
 
 <!-- Navigation Bar -->
 {% include 'blog/navbar.html' %}
-
 <div class="container my-3">
     <div class="row">
         <div class="col-md-8 col-lg-9" id="main-area">
             {% block main_area %}
-
+            <!-- main_area block -->
             {% endblock %}
         </div>
 
@@ -28,7 +27,7 @@
                 <h5 class="card-header">Search</h5>
                 <div class="card-body">
                     <div class="input-group">
-                        <input type="text" class="form-control" placeholder="Search for..." id="search-input">
+                        <input type="text" class="form-control" placeholder="Search for.." id="search-input">
                         <span class="input-group-btn">
                             <button class="btn btn-secondary" type="button" onclick="searchPost();">
                                 Go!
@@ -86,7 +85,9 @@
 </script>
 
 <!-- Footer -->
-{% include 'blog/footer.html' %}
+<div>
+    {% include 'blog/footer.html' %}
+</div>
 
 <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
         integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"

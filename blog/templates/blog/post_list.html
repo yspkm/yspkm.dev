@@ -2,12 +2,20 @@
 {% block main_area %}
 
 <h1>
-    Blog
+    Posts
     {% if search_info %}
         <small class="text-muted">
             {{ search_info }}
         </small>
     {% endif %}
+
+    {% if tag %}
+        <span class="badge badge-light">
+            <i class="fas fa-tags"></i>
+            {{ tag }} ({{ tag.post_set.count }})
+        </span>
+    {% endif %}
+
     {%if category %}
         <span class="badge badge-secondary">
             {{ category }}
@@ -50,8 +58,7 @@
         </p>
 
         {% if p.tags.exists %}
-            <i class="fa-solid fa-hashtag">
-            </i>
+            <i class="fas fa-tags"></i>
             {% for tag in p.tags.iterator %}
                 <a href="{{ tag.get_absolute_url }}">
                     <span class="badge badge-pill badge-light">

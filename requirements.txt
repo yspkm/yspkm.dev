@@ -34,3 +34,4 @@ traitlets==5.0.4
 urllib3==1.25.10
 wcwidth==0.2.5
 zipp==3.2.0
+psycopg2==2.8.6

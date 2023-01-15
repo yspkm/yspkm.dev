@@ -65,6 +65,8 @@ migrations/
 _media/
 .secrets.json
 .env
+.env.prod
+.env.prod.db
 
 # Flask stuff:
 instance/

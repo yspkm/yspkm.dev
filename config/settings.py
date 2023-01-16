@@ -30,18 +30,16 @@ def get_secret(setting, secrets=secrets):
         raise ImproperlyConfigured(error_msg)
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = get_secret("SECRET_KEY")
-    #'django-insecure-$2ealsqz)+w_k##wxf7zd4)@s(f$$n^abgof!%x5v8-x6tee^d'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = int(os.environ.get('DEBUG', 1))
+#DEBUG = int(os.environ.get('DEBUG', 1))
+DEBUG = 0
 
-if os.environ.get('DJANGO_ALLOWED_HOSTS'):
-    ALLOWED_HOSTS = os.environ.get('DJANGO_ALLOWED_HOSTS').split(' ')
-else:
-    ALLOWED_HOSTS = []
-
-ALLOWED_HOSTS = []
-
+ALLOWED_HOSTS = ['localhost', '127.0.0.1', '18.178.200.193', 'yspkm.dev', 'www.yspkm.dev']
+#if os.environ.get('DJANGO_ALLOWED_HOSTS'):
+    #ALLOWED_HOSTS = os.environ.get('DJANGO_ALLOWED_HOSTS').split(' ')
+#else:
+    #ALLOWED_HOSTS = []
 
 # Application definition
 

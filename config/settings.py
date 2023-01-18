@@ -32,14 +32,15 @@ def get_secret(setting, secrets=secrets):
 SECRET_KEY = get_secret("SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-#DEBUG = int(os.environ.get('DEBUG', 1))
-DEBUG = 0
+DEBUG = int(os.environ.get('DEBUG', 1))
 
-ALLOWED_HOSTS = ['localhost', '127.0.0.1', '54.92.85.95', 'yspkm.dev', 'www.yspkm.dev']
-#if os.environ.get('DJANGO_ALLOWED_HOSTS'):
-    #ALLOWED_HOSTS = os.environ.get('DJANGO_ALLOWED_HOSTS').split(' ')
-#else:
-    #ALLOWED_HOSTS = []
+# ALLOWED_HOSTS = ['localhost', '127.0.0.1', 'yspkm.dev', 'www.yspkm.dev', 'blog.yspkm.dev', 'static IP', ]
+ALLOWED_HOSTS = list()
+if os.environ.get('DJANGO_ALLOWED_HOSTS'):
+    tmp = str(os.environ.get('DJANGO_ALLOWED_HOSTS'))
+    ALLOWED_HOSTS = tmp.split(' ')
+else:
+    ALLOWED_HOSTS = []
 
 # Application definition
 

@@ -67,6 +67,7 @@ _media/
 .env
 .env.prod
 .env.prod.db
+data/
 
 # Flask stuff:
 instance/

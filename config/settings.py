@@ -35,7 +35,7 @@ SECRET_KEY = get_secret("SECRET_KEY")
 #DEBUG = int(os.environ.get('DEBUG', 1))
 DEBUG = 0
 
-ALLOWED_HOSTS = ['localhost', '127.0.0.1', '18.178.200.193', 'yspkm.dev', 'www.yspkm.dev']
+ALLOWED_HOSTS = ['localhost', '127.0.0.1', '54.92.85.95', 'yspkm.dev', 'www.yspkm.dev']
 #if os.environ.get('DJANGO_ALLOWED_HOSTS'):
     #ALLOWED_HOSTS = os.environ.get('DJANGO_ALLOWED_HOSTS').split(' ')
 #else:

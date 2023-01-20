@@ -12,9 +12,35 @@
 
 <body>
 
+<!-- start progress bar --> 
+
+    <div id="scroll-progress">
+        <!-- scroll progress -->
+    </div>
+    
+    <style>
+        body {
+            min-height: 200vh;
+        }
+
+        #scroll-progress {
+            position: fixed;
+            top: 0;
+            width: 0%;
+            height: 10px;
+            background: #BFB4D8;
+            z-index: 10000;
+        }
+    </style>
+
+
+<!-- end progress bar -->
+
 <!-- Navigation Bar -->
 {% include 'blog/navbar.html' %}
+
 <div class="container my-3">
+
     <div class="row">
         <div class="col-md-8 col-lg-9" id="main-area">
             {% block main_area %}
@@ -85,6 +111,17 @@
     );
 </script>
 
+    <script type="text/javascript">
+        const scrollProgress = document.getElementById('scroll-progress');
+        const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+        window.addEventListener(
+            'scroll', () => {
+                const scrollTop = document.body.scrollTop || document.documentElement.scrollTop;
+                scrollProgress.style.width = `${(scrollTop / height) * 100}%`;
+                }
+        );
+    </script>
+
 <!-- Footer -->
 <div>
     {% include 'blog/footer.html' %}
@@ -99,7 +136,6 @@
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
         integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
         crossorigin="anonymous"></script>
-
 </body>
 
 </html>

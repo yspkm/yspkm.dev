@@ -6,7 +6,7 @@ import (
 )
 
 func main(){
-    fname0, fname1 := "building_original.jpg", "tmp_original.jpg"
+    fname0, fname1 := "building.jpg", "tmp_original.jpg"
 
     file0, err0 := ioutil.ReadFile(fname0);
 

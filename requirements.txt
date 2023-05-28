@@ -13,7 +13,7 @@ django-extensions==3.0.9
 django-markdownx==3.0.1
 gunicorn==20.0.4
 idna==2.10
-importlib-metadata==2.0.0
+importlib-metadata==6.6.0
 ipython==7.18.1
 ipython-genutils==0.2.0
 jedi==0.17.2

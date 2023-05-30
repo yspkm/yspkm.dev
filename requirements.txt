@@ -1,6 +1,6 @@
 asgiref==3.7.2
 backcall==0.2.0
-beautifulsoup4==4.9.1
+beautifulsoup4==4.12.2
 certifi==2023.5.7
 chardet==5.1.0
 colorama==0.4.6

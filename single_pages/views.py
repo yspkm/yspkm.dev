@@ -7,8 +7,8 @@ def landing(request):
         'single_pages/landing.html'
     )
 
-def about_me(request):
+def about_blog(request):
     return render(
         request,
-        'single_pages/about_me.html'
+        'single_pages/about_blog.html'
     )

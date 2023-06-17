@@ -5,7 +5,7 @@ if ! [ -x "$(command -v docker-compose)" ]; then
   exit 1
 fi
 
-domains=(yspkm.dev www.yspkm.dev)
+domains=(yspkm.dev www.yspkm.dev *.yspkm.dev)
 rsa_key_size=4096
 data_path="./data/certbot"
 email="yskim0830@outlook.com" # Adding a valid address is strongly recommended

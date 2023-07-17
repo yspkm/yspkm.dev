@@ -33,5 +33,5 @@ sqlparse==0.3.1
 traitlets==5.9.0
 urllib3==2.0.3
 wcwidth==0.2.6
-zipp==3.15.0
+zipp==3.16.2
 psycopg2==2.9.6
